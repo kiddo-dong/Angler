@@ -16,7 +16,6 @@ public class AnglerController {
         this.anglerService = anglerService;
     }
 
-
     // gpt gpt-4o 모델
     // image + Text 기반 OpenAI 연결 Controller
     @PostMapping("/fishing")

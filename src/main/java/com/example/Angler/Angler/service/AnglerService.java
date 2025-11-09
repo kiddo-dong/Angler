@@ -1,7 +1,4 @@
 package com.example.Angler.Angler.service;
-
-import com.example.Angler.Angler.dto.AnglerResponseDto;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface AnglerService {

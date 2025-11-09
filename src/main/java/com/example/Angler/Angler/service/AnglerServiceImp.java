@@ -1,6 +1,7 @@
 package com.example.Angler.Angler.service;
 
-import com.example.Angler.Angler.dto.AnglerResponseDto;
+import com.example.Angler.extract.dto.ExtractedData;
+import com.example.Angler.extract.service.ExtractService;
 import com.example.Angler.openai.vision.response.ChatGPTResponse;
 import com.example.Angler.openai.vision.service.AiCallService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,12 @@ public class AnglerServiceImp implements AnglerService{
 
     // OpenAI Vision(gpt-4o)
     private final AiCallService aiCallService;
+    private final ExtractService extractService;
 
     @Autowired
-    public AnglerServiceImp(AiCallService aiCallService) {
+    public AnglerServiceImp(AiCallService aiCallService,ExtractService extractService) {
         this.aiCallService = aiCallService;
+        this.extractService = extractService;
     }
 
     // 데이터 흐름
@@ -27,7 +30,7 @@ public class AnglerServiceImp implements AnglerService{
     @Override
     public String phishingCheck(MultipartFile image) {
         // 이미지에서 추출된 데이터
-        String dataExtraction;
+        String extractedData;
 
         // OpenAI의 Vision 모델에 보낼 데이터
         String requestText =
@@ -38,25 +41,18 @@ public class AnglerServiceImp implements AnglerService{
         */
         try{
             ChatGPTResponse chatGPTResponse = aiCallService.requestImageAnalysis(image, requestText);
-            dataExtraction = chatGPTResponse.getChoices().get(0).getMessage().getContent();
+            extractedData = chatGPTResponse.getChoices().get(0).getMessage().getContent();
         } catch (IOException e){
             return "잘못된 데이터 입력";
         }
-        return dataExtraction;
 
-
-        /*
-        ==============================================
-
-        } -> 정제 후 데이터 상태
-       */
-
-
+        // 텍스트 처리된 데이터 정제 -> Object
+        ExtractedData refinedData = extractService.parse(extractedData);
+        String result = "정제된 데이터 | URL : " + refinedData.getUrl() + " | 전화번호 : " + refinedData.getPhone() + " | 계좌번호 : " + refinedData.getAccount();
         /*
         ==========================================================================
-        service에서 정제된 데이터 DTO -> 의심 패턴 판단 (피싱, 스미싱, 가짜청구 등)
-        즉, 최종 응답 데이터
-        return AnglerResponseDto
+        의심 패턴 판단 로직
         */
+        return result;
     }
 }
