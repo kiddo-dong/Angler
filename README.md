@@ -79,9 +79,9 @@ Angler는 이미지(스크린샷) 또는 텍스트로 받은 문자 메시지를
 - `OpenAiService` — OpenAI API 호출(텍스트/이미지 처리 담당)
 - `ExtractService` — AI 응답 문자열을 `ExtractedData(url, phone, account)`로 정제
 - `ValidatorService<T>` (인터페이스) / `UrlValidatorImpl`, `PhoneValidatorImpl`, `AccountValidatorImpl` — 각 항목의 서브스코어·이유 제공
-- `RiskScoreEngine` — 서브스코어를 가중합으로 합쳐 `trustScore` 계산
+- `RiskScoreEngineService` — 서브스코어를 가중합으로 합쳐 `trustScore` 계산
 - `AnglerResponseDto` — (trustScore, isPhishing, reasons)
-- `AnglerResponseFormatter` — DTO → 사용자 문장 변환
+- `AnglerResponseFormatter` — DTO → 사용자 문장 변환 (Helper Class)
 
 ---
 
