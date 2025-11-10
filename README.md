@@ -84,7 +84,7 @@ Angler는 이미지(스크린샷) 또는 텍스트로 받은 문자 메시지를
 - `AnglerResponseFormatter` — DTO → 사용자 문장 변환 (Helper Class)
 
 ```
-![구조도](./image.png)
+![구조도](https://github.com/kiddo-dong/Angler/image.png)
 ```
 ---
 
