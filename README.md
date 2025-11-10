@@ -66,7 +66,7 @@ Angler는 이미지(스크린샷) 또는 텍스트로 받은 문자 메시지를
 ```
 이 문자는 87점의 위험도가 있습니다.
 의심 링크이니 클릭하지 마세요.
-```
+
 
 > 내부적으로는 `AnglerResponseDto`(trustScore, isPhishing, reasons)를 생성하고, `AnglerResponseFormatter`로 사람이 읽기 좋은 메시지로 변환한 뒤 응답합니다.
 
