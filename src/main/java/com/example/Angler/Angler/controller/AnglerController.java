@@ -23,7 +23,10 @@ public class AnglerController {
     // image + Text 기반 OpenAI 연결 Controller
     @PostMapping("/fishing")
     public ResponseEntity<String> imageAnalysis(@RequestParam MultipartFile image){
+        // Phishing Check Service (Main Service)
         AnglerResponseDto anglerResponseDto = anglerService.phishingCheck(image);
+
+        // Response Formatting Helper Class (String Mapping)
         String finalMessage = AnglerResponseFormatter.format(anglerResponseDto);
 
         return ResponseEntity

@@ -25,7 +25,7 @@ public class AnglerServiceImp implements AnglerService{
     private final AiCallService aiCallService;
     // URL, 전화번호, 계좌번호 등으로 파싱/정제하는 서비스
     private final ExtractService extractService;
-    // URL 의심 여부 검사 및 서브스코어/이유 계산
+    // URL, 전화번호, 계좌번호 의심 여부 검사 및 서브스코어/이유 계산
     private final ValidatorService<String> urlValidator;
     private final ValidatorService<String> phoneValidator;
     private final ValidatorService<String> accountValidator;
