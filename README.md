@@ -46,7 +46,7 @@ Angler는 이미지(스크린샷) 또는 텍스트로 받은 문자 메시지를
 
 ```bash
 # Gradle wrapper 사용 예시
-./gradlew :backend:bootRun
+./gradlew :Angler:bootRun
 ```
 
 3. 기본 포트: `http://localhost:8080`
