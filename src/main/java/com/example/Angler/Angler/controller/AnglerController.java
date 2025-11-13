@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/angler")
-//@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8080"})
+@CrossOrigin(origins = {"http://localhost:3000", "https://kiddo-dong.github.io/Angler-Front/"})
 public class AnglerController {
 
     private final AnglerService anglerService;
@@ -25,19 +25,6 @@ public class AnglerController {
     public ResponseEntity<String> imageAnalysis(@RequestParam MultipartFile image){
         // Phishing Check Service (Main Service)
         AnglerResponseDto anglerResponseDto = anglerService.imagePhishingCheck(image);
-
-        // Response Formatting Helper Class (String Mapping)
-        String finalMessage = AnglerResponseFormatter.format(anglerResponseDto);
-
-        return ResponseEntity
-                .ok(finalMessage);
-    }
-
-    // Text기반
-    @PostMapping("text/fishing")
-    public ResponseEntity<String> textAnalysis(@RequestBody String message){
-        // Phishing Check Service (Main Service)
-        AnglerResponseDto anglerResponseDto = anglerService.textPhishingCheck(message);
 
         // Response Formatting Helper Class (String Mapping)
         String finalMessage = AnglerResponseFormatter.format(anglerResponseDto);
