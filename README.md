@@ -1,11 +1,11 @@
 # Angler
 
-Angler는 이미지(스크린샷) 또는 텍스트로 받은 문자 메시지를 분석해 피싱(사기/스미싱) 의심 여부와 신뢰도(trustScore)를 반환하는 AI + 규칙 기반 분석 서비스입니다.
+Angler는 이미지(스크린샷) 또는 텍스트로 받은 문자 메시지를 분석해 피싱(사기/스미싱) 의심 여부와 신뢰도(trustScore)를 반환하는 서비스입니다.
 
 ---
 
 ## 주요 기능
-- 이미지(OCR) → 텍스트 변환(현재 OpenAI Vision 연결)
+- 이미지(OCR) → 텍스트 변환(현재 OpenAI Vision(gpt-40-mini) 연결)
 - AI(또는 OCR) 결과에서 URL / 전화번호 / 계좌번호 추출
 - 정규식·평판·룰 기반 Validator로 서브스코어 산출
 - RiskScoreEngine으로 종합 신뢰도(trustScore, 0~100) 계산
